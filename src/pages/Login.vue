@@ -1,6 +1,6 @@
 <template>
     <main>
-        <p>Login</p>
+        <p>Login init</p>
     </main>
 </template>
 
