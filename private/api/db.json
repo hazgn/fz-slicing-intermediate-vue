@@ -1,0 +1,34 @@
+{
+    "users": [
+        { 
+            "id": 1,
+            "fullName": "user example",
+            "email" : "user@gmail.com",
+            "phone" : "081234123123",
+            "password" : "userpass"
+        }
+    ],
+    "minicampt": [
+    { 
+        "id": 1,
+        "status": ["ONLINE", "DISALURKAN KERJA"],
+        "title" : "Digital Marketing",
+        "desc" : "Kamu akan belajar tentang dasar-dasar media sosial, konten marketing, social media marketing, membuat konten yang berkonversi tinggi serta cara mendistribusi iklan/ads yang...",
+        "date": "02 SEPTEMBER 2022 - 18 NOVEMBER 2022",
+        "image": "https://elearn-production.s3.ap-southeast-1.amazon…le/1659347545170/c830b6cf39cd0d96aba2aee27347167e",
+        "name": "Larasati Caesar Utoro",
+        "work": "Operation Division Head",
+        "price": "Rp 6.000.000"
+    }
+    ],
+    "videoBelajar": [
+        {
+            "title": "Build Backend with NodeJS for Beginner",
+            "image": "https://arkademy-production.s3.ap-southeast-1.amazonaws.com/arkademy-course/icon/92ac5df075cde4ea4f2314c0f3f33a5e",
+            "desc": "Kunjungi Website Fazztrack Untuk Info Pelatihan..",
+            "level": "Level Basic",
+            "star": 5,
+            "price": "Gratis"
+        }
+    ]
+}
