@@ -1,7 +1,7 @@
 <template>
     <main>
         <Navbar />
-        <p>This Home</p>
+        <p>This Home init</p>
         <Footer />
     </main>
 </template>
