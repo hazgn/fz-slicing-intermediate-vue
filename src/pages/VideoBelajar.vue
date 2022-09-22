@@ -1,6 +1,6 @@
 <template>
     <main>
-        <p>Vide Belajar</p>
+        <p>Vide Belajar init</p>
     </main>
 </template>
 
