@@ -1,7 +1,7 @@
 <template>
     <main>
         <p>Register</p>
-        <TextArea class="border-red-600"/>
+        <TextArea class="border-red-600 p-5"/>
     </main>
 </template>
 
