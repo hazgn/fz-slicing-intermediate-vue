@@ -3,7 +3,7 @@
         <Navbar/>
 
         <!-- header -->
-        <div class="p-10 flex">
+        <div class="p-10 flex mt-16">
             <div class="pl-6  flex flex-col gap-5">
                 <h1 class="font-bold text-5xl leading-normal">
                     Our Mission Is To <br>
