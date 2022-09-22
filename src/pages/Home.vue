@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="flex flex-wrap p-1 items-center justify-between lg:p-10">
-                        <img v-for="(data, idx) in listMitra" :key="idx" :src="data.image" alt="avatar" />
+                        <img v-for="(data, idx) in listMitra" :key="idx" :src="data.image" alt="avatar" class="h-24 w-24 lg:h-auto lg:w-auto lg:p-3"  />
                         <p class="text-2xl font-bold p-6">600+</p>
                     </div>
                 </section>
@@ -73,10 +73,107 @@
                                 <p class="font-bold text-center pt-4 md:pt-0 md:text-left md:text-xl lg:text-2xl">Tidak memiliki banyak waktu?</p>
                                 <p class="text-center text-sm pt-4 text-slate-700 md:text-left md:text-xl md:pb-4 md:w-[90%]">Coba program terbaru Fazztrack Mini Bootcamp! Belajar dengan menyesuaikan waktumu dan bisa langsung disalurkan kerja.</p>
                                 <div class="flex justify-center md:inline pt-4">
-                                    <Button label="Daftar Sekarang" styles="bg-primary hover:bg-[#2557a7] text-white font-bold text-sm mt-5 p-4 md:p-4 lg:p-4" @onSubmit="this.$router.push('/minicamp')" />
+                                    <Button label="Daftar Sekarang" styles="bg-primary hover:bg-[#2557a7] text-white font-bold text-sm mt-5 p-4 md:p-4 lg:p-5" @onSubmit="this.$router.push('/register')" />
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <section class="bg-[#fef3ec] p-5 lg:p-20">
+                    <div class="flex justify-center md:justify-start items-center">
+                        <p class="text-2xl font-bold">Alumni</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-secondary">
+                        <path d="M9.653 16.915l-.005-.003-.019-.01a20.759 20.759 0 01-1.162-.682 22.045 22.045 0 01-2.582-1.9C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 018-2.828A4.5 4.5 0 0118 7.5c0 2.852-2.044 5.233-3.885 6.82a22.049 22.049 0 01-3.744 2.582l-.019.01-.005.003h-.002a.739.739 0 01-.69.001l-.002-.001z" />
+                        </svg>
+                        <p class="text-2xl font-bold">Fazztrack</p>
+                    </div>
+                    <p class="text-slate-700 text-center md:text-left">Testimoni alumni Fazztrack tentang bootcamp dan penyaluran kerja yang sudah mereka ikuti.</p>
+                        <div class="md:flex justify-between flex-wrap">
+                            <CardAlumni v-for="(data, idx) in listAlumni" :key="idx" :payload="data" />
+                        </div>
+                </section>
+
+                <section class="p-5 lg:p-20">
+                    <div class="md:flex items-center justify-between">
+                        <div>
+                            <p class="text-2xl font-bold text-center md:text-left">Cerita Alumni Bootcamp</p>
+                            <p class="text-xl text-slate-700 text-center md:text-left">Cerita perjalanan heroik alumni bootcamp Fazztrack</p>
+                        </div>
+                        <Button label="Lihat Selengkapnya" styles="border-2 p-4 text-sm text-slate-800 font-bold hidden lg:inline" />
+                    </div>
+                    <div class="lg:flex justify-between">
+                        <CardStoryAlumni v-for="(data, idx) in listStoryAlumni" :key="idx" :payload="data" />
+                        <div class="flex justify-center">
+                            <Button label="Lihat Selengkapnya" styles="border-2 p-4 text-sm text-slate-800 font-bold lg:hidden mt-10" />
+                        </div>
+                    </div>
+                </section>
+
+                <section class="p-5 lg:p-20">
+                    <p class="text-center text-2xl font-bold">Pertanyaan Yang Sering Ditanyakan</p>
+                    <p class="text-center text-xl text-slate-700">Bootcamp dilaksanakan berdasarkan kurikulum yang telah disusun untuk kamu siap bekerja.</p>
+                    
+                    <div class="border-2 p-5 rounded-md shadow-md mt-5 cursor-pointer transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 z-10" v-on:click="isCondition=!isCondition, isHiring=false, isStages=false, isProsesCov=false, isTrain=false" :class="{'bg-primary' : isCondition}">
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold" :class="{'text-white' : isCondition}">Syarat untuk mengikuti program pelatihan Fazztrack apa saja kak?</p>
+                            <Arrow class="arrow-down transition-all duration-300" :class="{'-rotate-180 text-white' : isCondition}" />
+                        </div>
+                        <div v-if="isCondition" class="pt-5">
+                            <ul class="text-white">
+                            <li>- Pria maupun wanita dengan usia 17 - 28 tahun,</li>
+                            <li>- Tidak terikat kontrak dengan perusahan manapun,</li>
+                            <li>- Tidak dalam masa kuliah ataupun sekolah (kecuali semester 8),</li>
+                            <li>- Siap bekerja di perusahaan rekanan Fazztrack.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="border-2 p-5 rounded-md shadow-md mt-5 cursor-pointer transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 z-10" v-on:click="isStages=!isStages, isCondition=false, isHiring=false, isProsesCov=false, isTrain=false" :class="{'bg-primary' : isStages}">
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold" :class="{'text-white' : isStages}">Bagaimana tahapan program pelatihan ini?</p>
+                            <Arrow class="arrow-down transition-all duration-300" :class="{'-rotate-180 text-white' : isStages}" />
+                        </div>
+                        <div v-if="isStages" class="pt-5">
+                            <ul class="text-white">
+                                <li>Pendaftaran > Tes dan Interview secara online > Proses Pelatihan > Tes dan Interview kerja > Bekerja</li>
+                            </ul>
+                        </div>  
+                    </div>
+
+                    <div class="border-2 p-5 rounded-md shadow-md mt-5 cursor-pointer transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 z-10" v-on:click="isHiring=!isHiring, isCondition=false, isStages=false, isProsesCov=false, isTrain=false" :class="{'bg-primary' : isHiring}">
+                        <div class="flex justify-between items-center">
+                                <p class="font-bold" :class="{'text-white' : isHiring}">Bagaimana proses penyaluran kerja di Fazztrack?</p>
+                                <Arrow class="arrow-down transition-all duration-300" :class="{'-rotate-180 text-white' : isHiring}" />
+                        </div>
+                        <div v-if="isHiring" class="pt-5">
+                            <ul class="text-white">
+                                <li>Pada pekan akhir pelatihan, kamu akan diberi tugas untuk membuat CV. Kemudian CV tersebut akan disalurkan oleh Fazztrack ke perusahaan rekanan kami. Jika CV kamu terpilih, kami akan menjadwalkan tes maupun interview dengan perusahaan tersebut. Jangan khawatir jika kamu belum terpanggil interview karena Fazztrack akan selalu membantu kamu untuk disalurkan kerja ke perusahaan yang lain.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="border-2 p-5 rounded-md shadow-md mt-5 cursor-pointer transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 z-10" v-on:click="isTrain=!isTrain, isCondition=false, isHiring=false, isStages=false, isProsesCov=false" :class="{'bg-primary' : isTrain}">
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold" :class="{'text-white' : isTrain}">Sistem tesnya bagaimana kak?</p>
+                            <Arrow class="arrow-down transition-all duration-300" :class="{'-rotate-180 text-white' : isTrain}" />
+                        </div>
+                        <div v-if="isTrain" class="pt-5">
+                            <ul class="text-white">
+                                <li>Nantinya akan dilaksanakan tes secara online di domisili masing-masing. Soal akan dikirim di grup discord jam 09.00 pada hari Senin, sesuai jadwal tes yang tertera di fazztrack.com/bootcamp</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-20 flex justify-center">
+                        <Button label="Lihat Selengkapnya" styles="p-3 border-2 text-sm font-bold text-slate-700 hover:bg-slate-200 rounded-md" />
+                    </div>
+                </section>
+
+                <section class="bg-[#fef3ec] p-5 lg:p-20">
+                    <p class="text-2xl text-center font-bold">Tunggu Apa Lagi? Gabung Bersama Kami!</p>
+                    <div class="flex justify-center mt-10">
+                        <Button label="Daftar Sekarang" styles="bg-secondary p-3 rounded-md text-white font-bold hover:bg-orange-500" @onSubmit="this.$router.push('/register')" />
                     </div>
                 </section>
             </div>
@@ -88,12 +185,20 @@
     import Navbar from '@/components/molecules/Navbar.vue';
     import Footer from '@/components/molecules/Footer.vue';
     import Button from '@/components/atom/Button.vue';
-import CardSelectBootcamp from '@/components/molecules/CardSelectBootcamp.vue';
+    import CardSelectBootcamp from '@/components/molecules/CardSelectBootcamp.vue';
+    import CardAlumni from '@/components/molecules/CardAlumni.vue';
+    import CardStoryAlumni from '@/components/molecules/CardStoryAlumni.vue';
+    import Arrow from '@/components/atom/Arrow.vue';
 
     export default{
         name:'HomePage',
         data(){
             return{
+                isCondition: false,
+                isStages: false,
+                isTrain:false,
+                isHiring:false,
+                isProsesCov:false,
                 listMainUser: [
                     {
                         image:"https://fazztrack.com/_nuxt/img/05-bluebird.d51563e.svg"
@@ -170,6 +275,48 @@ import CardSelectBootcamp from '@/components/molecules/CardSelectBootcamp.vue';
                         image:"https://fazztrack.com/_nuxt/img/DevOps-Engineer-new.394e12c.png",
                         desc:"Membangun aplikasi fullstack dengan Javascript dan Golang serta otomasi sistem untuk membantu proses development lebih cepat."
                     }
+                ],
+                listAlumni : [
+                {
+                    name: "Rico Andrian",
+                    image: "https://fazztrack.com/_nuxt/img/rico-andrian.5427f9c.png",
+                    instagram: "@rpetz_",
+                    works: "Fullstack Engineer di Rey.id",
+                    desc: '"Mulai dari nol", pasti kita sering dengar kalimat itu. Nah itu yang saya rasakan disini. Masuk dengan tangki kosong lalu keluar dengan tangki yang terisi. Dengan mentor yang family friendly, pengajaran yang baik, dan teman - teman yang asik sangat mendukung proses belajar saya. Tak hanya teknikal namun softskill juga saya dapatkan. Terakhir, program ISA yang sangat membantu saya. So, let`s get it on.'
+                }, {
+                    name: "Irfan Junaidi",
+                    image: "https://fazztrack.com/_nuxt/img/irfan-junaidi.e694b62.png",
+                    instagram: "@irvan_junjun",
+                    works: "Software Engineer di PT. Anak Muda Digital",
+                    desc: "Selama pelatihan di bootcamp fazztrack ini, saya mendapatkan banyak manfaat. Dari skill teknikal dan juga soft skill, disana juga mendapatkan pengalaman yang sangat banyak, dari pengalaman project tim, hingga mengerjakan suatu project dengan jangka waktu yang tidak banyak tentunya. Selain itu, didalam pelatihan ini mendapatkan relasi baru dan tentunya ilmu yang sangat bermanfaat."
+                }, {
+                    name: "Rahadian Reza Rizaldy",
+                    image: "https://fazztrack.com/_nuxt/img/rahadian-reza.bb61d01.png",
+                    instagram: "@rahadiaanrr",
+                    works: "Mobile Engineer di FlipID",
+                    desc: "Saya sudah memulai belajar programming sejak lama tetapi setelah mengikuti bootcamp, saya belajar lebih banyak hal dimulai dari basic menggunakan javascript dan di lanjut membuat sebuah website hingga membuat sebuah aplikasi. Selama bootcamp saya mendapat mentor untuk mendampingi  melatih hard skill dan soft skill saya. Materi yg diberikan pun cukup jelas dan sesuai dengan industri teknologi yang dibutuhkan saat ini. Setelah selesai dari bootcamp saya menjadi seorang mobile engineer."
+                }, {
+                    name: "Akbar Ramadhan",
+                    image: "https://fazztrack.com/_nuxt/img/akbar-ramadhan.b00dc0d.png",
+                    instagram: "@akbrrmdhn",
+                    works: "Frontend Developer di Asian Sigma Technology",
+                    desc: "Long before I enrolled into FazzTrack, I thought I knew a lot about web development already. However, I realized that my knowledge on said field is still lacking. FazzTrack helped me improve both my hard skill on web and mobile development, and my soft skill on team management and how to cooperate with fellow programmers. Thanks to that, I've managed to land a job without being clueless on how to work in a company as a junior programmer. Truly recommended for any newcomers who need prior experience on programming."
+                }
+                ],
+                listStoryAlumni : [
+                {
+                    title:"Lulusan Pesantren juga Bisa jadi DevOps Engineer",
+                    image:"https://fazztrack.com/_nuxt/img/afsana.917e408.png",
+                    desc:"Afsana lulusan pesantren dari Semarang bercita-cita sebagai Software Engineer sempat kesulitan membagi waktu antara mengaji, belajar akademik, dan belajar programming. Dengan kegigihanya Afsana mengikuti bootcamp Fazztrack sampai akhirnya dia menjadi Devops Engineer."
+                }, {
+                    title:"Rela Drop Out Demi Mengejar Cita-Cita jadi Programmer",
+                    image:"https://fazztrack.com/_nuxt/img/shafa.6b57dc4.png",
+                    desc:"Melihat adanya peluang lebih besar sebagai female Software Engineer, Shafa memilih dropout dan mengikuti pelatihan intensif dan mentoring di Fazztrack. Bekal ilmu yang didapat dari Fazztrack mengantarkannya menjadi Frontend Engineer."
+                }, {
+                    title:"Kata Siapa Fresh Graduate Susah Dapat Kerja? Ini Buktinya",
+                    image:"https://fazztrack.com/_nuxt/img/tresna.fd6c125.png",
+                    desc:"Tresna, fresh graduate yang menemukan jalan ninjanya melalui Fazztrack. Disaat fresher graduate lainnya mengalami kesulitan dalam mencari pekerjaan, Tresna mengambil bootcamp Devops Engineer. Sekarang Tresna menjadi Devops Engineer di Gramedia."
+                }
                 ]
             }
         },
@@ -177,7 +324,10 @@ import CardSelectBootcamp from '@/components/molecules/CardSelectBootcamp.vue';
             Navbar,
             Footer,
             Button,
-            CardSelectBootcamp
+            CardSelectBootcamp,
+            CardAlumni,
+            CardStoryAlumni,
+            Arrow
         }
     }
 </script>
