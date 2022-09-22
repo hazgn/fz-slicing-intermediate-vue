@@ -7,9 +7,9 @@
             <p class="text-center text-2xl font-bold">Selamat Datang</p>
             <p class="text-xs text-center pt-1">Belum Punya Akun Fazztrack? <span class="text-secondary font-bold cursor-pointer" @click="this.$router.push('/register')">Daftar Disini</span></p>
             <label class="text-sm"><span class="text-red-700">*</span>Email</label>
-            <TextArea type="text" name="email" class="w-full mb-3" @onsubmits="inputChange" />
+            <TextArea type="text" name="email" class="w-full mb-3 px-3 py-2" @onsubmits="inputChange" />
             <label class="text-sm"><span class="text-red-700">*</span>Password</label>
-            <TextArea type="password" name="password" class="w-full" @onsubmits="inputChange" />
+            <TextArea type="password" name="password" class="w-full px-3 py-2" @onsubmits="inputChange" />
             <div class="mt-3 flex justify-between">
                 <div class="flex">
                     <TextArea type="checkbox" class="mr-2" />
