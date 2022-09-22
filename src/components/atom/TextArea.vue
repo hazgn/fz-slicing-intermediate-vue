@@ -17,7 +17,7 @@ export default {
         submitInput(){
             const data = {
                 name : this.name,
-                value : this.values
+                value : this.value
             }
             this.$emit("onsubmits", data)
         }
