@@ -1,7 +1,11 @@
 <template>
     <main class="flex justify-center content-center">
         
-        <div class="m-5 mt-10 p-5 border-2 lg:w-[50%] pt-10 pb-10">
+        <div v-if="auth.isLoading" class="h-screen flex">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" />
+        </div>
+        
+        <div class="m-5 mt-10 p-5 border-2 lg:w-[50%] pt-10 pb-10" v-else>
             <div class="flex justify-center pb-5">
                 <img :src="image" />
             </div>
