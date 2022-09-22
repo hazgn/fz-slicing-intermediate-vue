@@ -4,7 +4,6 @@ export default {
     namespaced: true,
     state: () => ({
         authUser: {
-            id: null,
             data: {
                 users: {},
                 token: JSON.parse(localStorage['token'] || null),
