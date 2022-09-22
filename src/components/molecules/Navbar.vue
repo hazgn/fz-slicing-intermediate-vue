@@ -72,8 +72,8 @@
                         </li>
                         <li>
                             <div class="flex flex-col mt-5 items-center lg:flex-row lg:mt-1 lg:relative lg:right-12 xl:right-auto lg:top-1">
-                                <Button label="Masuk" styles="bg-white border-[1px] hover:bg-slate-100 lg:mr-5" @onSubmit="onRegister" />
-                                <Button label="Daftar" styles="bg-[#2557a7] hover:bg-primary text-white mt-5 lg:mt-0" @onSubmit="onLogin" />
+                                <Button label="Masuk" styles="w-[80%] bg-white border-[1px] hover:bg-slate-100 lg:mr-5" @onSubmit="onRegister" />
+                                <Button label="Daftar" styles="w-[80%] bg-[#2557a7] hover:bg-primary text-white mt-5 lg:mt-0" @onSubmit="onLogin" />
                             </div>
                         </li>
                     </ul>
