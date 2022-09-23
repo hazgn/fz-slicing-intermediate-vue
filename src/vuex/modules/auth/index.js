@@ -22,7 +22,7 @@ export default {
     actions: {
         LoginUsers(contex) {
             contex.commit("SET_LOGIN_PENDING")
-            axios.post('')
+            axios.post(' ')
         },
         async RegisterUsers(_context, payload){
             try{
