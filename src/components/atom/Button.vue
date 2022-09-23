@@ -1,5 +1,5 @@
 <template>
-    <button :class="`w-[80%] p-3 lg:p-2 lg:pr-5 rounded-lg lg:pl-5  ${styles}`" v-on:click="submit">{{label}}</button>
+    <button :class="`p-3 lg:p-2 lg:pr-5 rounded-lg lg:pl-5  ${styles}`" v-on:click="submit">{{label}}</button>
 </template>
 
 <script>
