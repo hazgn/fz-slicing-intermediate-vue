@@ -1,31 +1,37 @@
 <template>
     <main>
+        <Navbar/>
         <p>Mini Bootcamp</p>
-        <div v-f></div>
-        {{minicamps.data}}
+        <div v-for="(element, id) in minicamps.data" :key="id">
+            <div>
+                {{element}}         
+            </div>
+        </div>
     </main>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
+import Navbar from "@/components/molecules/Navbar.vue";
 
 
 
     export default{
-        name:"MiniBootcampPage",
-        methods : {
-            ...mapActions({
+    name: "MiniBootcampPage",
+    methods: {
+        ...mapActions({
             getListCamp: "minicamp/miniCampGet",
-         }),
-        },
-        computed: {
+        }),
+    },
+    computed: {
         ...mapState({}),
         ...mapGetters({
-        minicamps : "minicamp/miniCampGet",
+            minicamps: "minicamp/miniCampGet",
         }),
-        },
-        mounted(){
-            this.getListCamp()
-        }
-    }
+    },
+    mounted() {
+        this.getListCamp();
+    },
+    components: { Navbar }
+}
 </script>
