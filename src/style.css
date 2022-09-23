@@ -35,11 +35,11 @@
 }
 
 .image-hero-0{
-    @apply relative h-[290px] w-auto mt-1 -right-24 md:-right-52 -z-10  lg:right-10;
+    @apply relative h-[290px] w-auto mt-1 -right-44 md:-right-52 -z-10  lg:right-10;
 }
 .image-hero-1{
     @apply relative -mt-1 h-[290px] w-auto lg:absolute md:-right-6 lg:right-[1rem] ;
 }
 .image-hero-2{
-    @apply relative -mt-2 h-[280px] w-auto right-24 md:right-40 lg:absolute lg:right-0;
+    @apply relative -mt-2 h-[280px] w-auto right-44 md:right-40 lg:absolute lg:right-0;
 }

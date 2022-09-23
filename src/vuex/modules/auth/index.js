@@ -7,7 +7,7 @@ export default {
             id: null,
             data: {
                 users: {},
-                token: JSON.parse(localStorage['web-access-token'] || null),
+                token: JSON.parse(localStorage['web-access-token'] || null)
             },
             isLoading: false,
             isError: false,
@@ -35,9 +35,10 @@ export default {
             } catch (error){
                 console.log(error);
             }
+        }
         },
-    },
     getters: {
 
-    }
+    },
+
 }
