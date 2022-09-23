@@ -44,8 +44,20 @@ export default {
                 .catch((err) => {
                     contex.commit("SET_LOGIN_REJECTED", err.response)
                 })
+        },
+        async RegisterUsers(_context, payload){
+            try{
+                const response = await axios.post(
+                    "https://fazz-track-sample-api.vercel.app/register",
+                    { email : payload.email, password : payload.password }    
+                );
+                console.log(response.data)
+                return response.data;
+            } catch (error){
+                console.log(error);
+            }
         }
-    },
+        },
     getters: {
         LoginUsers(state) {
             return state.authUser
