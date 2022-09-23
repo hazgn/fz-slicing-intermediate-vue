@@ -7,7 +7,7 @@ export default {
             id: null,
             data: {
                 users: {},
-                token: JSON.parse(localStorage['web-access-token'] || null),
+                token: JSON.parse(localStorage['web-access-token'] || null)
             },
             isLoading: false,
             isError: false,
@@ -22,10 +22,23 @@ export default {
     actions: {
         LoginUsers(contex) {
             contex.commit("SET_LOGIN_PENDING")
-            axios.post('')
+            axios.post(' ')
+        },
+        async RegisterUsers(_context, payload){
+            try{
+                const response = await axios.post(
+                    "https://fazz-track-sample-api.vercel.app/register",
+                    { email : payload.email, password : payload.password }    
+                );
+                console.log(response.data)
+                return response.data;
+            } catch (error){
+                console.log(error);
+            }
         }
-    },
+        },
     getters: {
 
-    }
+    },
+
 }
