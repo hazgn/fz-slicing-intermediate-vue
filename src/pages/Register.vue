@@ -29,7 +29,7 @@
                 </div>
                 <div class="mt-5 flex items-center px-1">
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" class="mr-2 " @click="setujuConfirm">
-                    <label for="vehicle1">Saya menyetujui <span class="font-bold text-blue-900 cursor-pointer">Syarat dan Ketentuan</span></label><br>
+                    <label for="vehicle1">Saya menyetujui<span class="font-bold text-blue-900 cursor-pointer">Syarat dan Ketentuan</span></label><br>
                 </div>
                 <Button label="Daftar Fazztrack" class="w-full bg-orange-400 mt-5 text-white"/>
                 <h1 v-if="wrong" class="text-red-600 text-center mt-5">Failed please confirm/same password</h1>
@@ -42,6 +42,9 @@
 <script>
 import TextArea from '@/components/atom/TextArea.vue';
 import Button from '@/components/atom/Button.vue';
+import { mapActions } from 'vuex';
+
+
     export default {
     name: "RegisterPage",
     components: { TextArea, Button },
@@ -57,6 +60,9 @@ import Button from '@/components/atom/Button.vue';
         }
     },
     methods: {
+        ...mapActions({
+            registerUser : "auth/RegisterUsers"
+        }),
         setujuConfirm(){
             this.setuju = !this.setuju
             console.log(this.setuju)
@@ -64,15 +70,11 @@ import Button from '@/components/atom/Button.vue';
         submitsHandle(){
             this.wrong = false
             const data = {
-            name : this.name,
             email : this.email,
-            nohp : this.nohp,
             password : this.password,
-            confirm : this.confirm,
             }
             if(this.password == this.confirm && this.setuju == true){
-                localStorage.setItem('user', JSON.stringify(data))
-                this.$router.push('/login')
+                this.registerUser(data).then(() => this.$router.push('/login')).catch((err) => console.log(err))
             } else {
                 this.wrong = true
             }

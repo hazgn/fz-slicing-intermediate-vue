@@ -8,7 +8,7 @@ import NotFound from '@/pages/NotFound.vue'
 
 const auth = (to, from, next) => {
     const token = localStorage.getItem('token')
-    if (!token) next('/')
+    if (!token) next('/login')
     next()
 }
 
