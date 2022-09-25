@@ -117,15 +117,15 @@
             getListVideos: "videoBelajar/getListVideos"
         })
     },
-    async mounted() {
+    mounted() {
         const token = this.dataUser.data.token
         this.getListVideos(token)
     },
     components: {
-    Navbar,
-    Footer,
-    CardVideo,
-    Button
-}
+        Navbar,
+        Footer,
+        CardVideo,
+        Button
+    }
 }
 </script>
