@@ -87,7 +87,7 @@
             </section>
 
             <section class="pt-5 p-5 lg:px-20 lg:pt-1 bg-slate-200 -z-10 md:grid grid-cols-4">
-                <CardVideo v-for="(data, idx) in listVideos.data" :key="idx" :payload="data" />
+                <CardVideo v-for="(data, idx) in listVideos.data" :key="idx" :payload="data" @click="this.$router.push(`modul-belajar/edit-or-delete/${data.id}`)" />
             </section>
         </main>
 
