@@ -52,6 +52,7 @@
     },
     methods: {
         ...mapActions({
+            editVideo: 'videoBelajar/editVideo',
             deleteVideo : 'videoBelajar/deleteVideo'
         }),
         inputChange(data){
@@ -61,10 +62,30 @@
             if(data.name === 'level') this.level = data.value
             if(data.name === 'price') this.price = parseInt(data.value)
         },
+        editHandler(){
+            if(this.rating > 5){
+                alert('error: rating max 5')
+            }else{
+                const body = {
+                title: this.title,
+                    description : this.description,
+                    cover: this.cover,
+                    rating: this.rating,
+                    level: this.level,
+                    price: this.price
+                }
+                this.editVideo({id:this.$route.params.id, body, token: this.dataUser.data.token})
+                .then(()=> {
+                    this.$router.replace('/modul-belajar')
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+        },
         deleteHandler(){
                 this.deleteVideo({id:this.$route.params.id, token: this.dataUser.data.token})
-                    .then((res) => {
-                        console.log(res);
+                    .then(() => {
+                        this.$router.replace('/modul-belajar')
                     }).catch((err) => {
                         console.log(err);
                     })
