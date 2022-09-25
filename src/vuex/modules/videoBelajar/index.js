@@ -6,6 +6,7 @@ export default {
         listVideos: {
             data: [],
             isLoading: false,
+            isSuccess: false,
             isError: false,
             errMsg: ''
         }
@@ -16,6 +17,7 @@ export default {
         },
         SET_LIST_VIDEOS_FULFILLED(state, payload) {
             state.listVideos.isLoading = false
+            state.listVideos.isSuccess = true
             state.listVideos.data = payload.data.data
         },
         SET_LIST_VIDEOS_REJECTED(state) {

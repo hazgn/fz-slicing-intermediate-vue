@@ -1,11 +1,12 @@
 <template>
     <div class="mt-10">
-        <div class="w-full bg-white shadow-xl lg:h-[490px] rounded-md xl:w-96 lg:w-96 pb-10 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 cursor-pointer">
-            <img :src="payload.cover" class="w-full object-cover h-52 rounded-t-md" alt="logo" />
-            <div class="p-5">
-                <p class="text-xl font-bold mb-3">{{payload.title}}</p>
-                <p class="text-lg text-slate-700 mb-3">{{payload.description.substring(0, 70)}}...</p>
-                <div class="flex justify-between pb-3 border-b-2">
+        <div class="bg-white w-full h-full lg:w-64 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 cursor-pointer">
+            <img :src="payload.cover" class="w-full object-cover h-52 lg:h-32 rounded-t-md " alt="logo" @error="errorImgHandler" />
+            <div class="flex flex-col justify-between h-[65%]">
+                <p class="text-sm font-bold p-3">{{payload.title}}</p>
+                <p class="text-xs text-slate-700 p-3">{{payload.description.substring(0, 70)}}...</p>
+                <div class="p-3">
+                    <div class="flex justify-between pb-3 border-b-2">
                     <div class="flex">
                         <div v-for="(idx) in payload.rating" :key="idx" class="pr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-secondary">
@@ -14,10 +15,11 @@
                         </div>
                     </div>
                     <p class="text-slate-700">{{payload.level}}</p>
-                </div>
-                <div class="mt-3 flex justify-between">
-                    <p class="text-slate-700">Harga Modul</p>
-                    <p class="text-secondary font-bold">{{payload.price}}</p>
+                    </div>
+                    <div class="pt-3 flex justify-between">
+                        <p class="text-slate-700">Harga Modul</p>
+                        <p class="text-secondary font-bold">{{payload.price}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,10 +29,16 @@
 <script>
     export default{
         name:"CardVideoComponent",
+        methods: {
+            errorImgHandler(e){
+                e.target.onerror = null
+                e.target.src = require('@/assets/logo.png')
+            }
+        },
         props:{
             payload: {
                 type: Object,
-                required:true
+                required:false
             }
         }
     }
