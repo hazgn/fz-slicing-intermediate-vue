@@ -23,8 +23,8 @@
         </ul>
       </div>
     
-      <div className="px-28 pt-10 pb-10 flex justify-center bg-orange-100">
-      <Button label="Tambah kelas" class=" text-white font-bold w-52  bg-orange-600"/>
+      <div className="px-28 pt-10 pb-10 flex justify-center bg-orange-100" >
+      <Button @click="handlePost" label="Tambah kelas" class=" text-white font-bold w-52  bg-orange-600"/>
       </div>
 
       <div className='grid grid-cols-3 px-28 py-14 gap-5'>
@@ -77,7 +77,11 @@ import Button from "@/components/atom/Button.vue";
     methods: {
         ...mapActions({
             getListCamp: "minicamp/miniCampGet",
+            postListcamp: "minicamp/miniCampPost"
         }),
+        handlePost(){
+          this.postListcamp().then(() => this.getListCamp()).catch((err) => err)
+        }
     },
     computed: {
         ...mapState({}),
@@ -85,6 +89,7 @@ import Button from "@/components/atom/Button.vue";
             minicamps: "minicamp/miniCampGet",
         }),
     },
+
     mounted() {
         this.getListCamp();
     },
