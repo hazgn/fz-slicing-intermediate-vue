@@ -35,6 +35,12 @@ export default {
                 contex.commit("SET_LIST_VIDEOS_REJECTED")
                 return error
             }
+        },
+        editVideo(contex, payload) {
+            return axios.put(`https://fazz-track-sample-api.vercel.app/video/${payload.id}`, payload.body, { headers: { 'token': payload.token } })
+        },
+        deleteVideo(contex, payload) {
+            return axios.delete(`https://fazz-track-sample-api.vercel.app/video/${payload.id}`, { headers: { 'token': payload.token } })
         }
     },
     getters: {
