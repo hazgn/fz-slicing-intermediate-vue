@@ -12,7 +12,8 @@ export default {
         },
         videoById: {
             data: {},
-            isLoading: false
+            isLoading: false,
+            isSuccess: false
         }
     }),
     mutations: {
@@ -33,7 +34,8 @@ export default {
         },
         SET_VIDEO_BY_ID_FULFILLED(state, payload) {
             state.videoById.isLoading = false
-            state.videoById.data = payload.data
+            state.videoById.isSuccess = true
+            state.videoById.data = payload.data.data
         }
     },
     actions: {
@@ -52,6 +54,7 @@ export default {
                 contex.commit('SET_VIDEO_BY_ID_PENDING')
                 const response = await axios.get(`https://fazz-track-sample-api.vercel.app/video/${payload.id}`, { headers: { 'token': payload.token } })
                 contex.commit('SET_VIDEO_BY_ID_FULFILLED', response)
+                return response
             } catch (error) {
                 console.log(error);
             }
@@ -66,6 +69,9 @@ export default {
     getters: {
         getListVideos(state) {
             return state.listVideos
+        },
+        getVideoById(state) {
+            return state.videoById
         }
     }
 }
