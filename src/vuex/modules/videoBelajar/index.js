@@ -9,6 +9,10 @@ export default {
             isSuccess: false,
             isError: false,
             errMsg: ''
+        },
+        videoById: {
+            data: {},
+            isLoading: false
         }
     }),
     mutations: {
@@ -23,6 +27,13 @@ export default {
         SET_LIST_VIDEOS_REJECTED(state) {
             state.listVideos.isError = true
             state.listVideos.errMsg = 'Server Error'
+        },
+        SET_VIDEO_BY_ID_PENDING(state) {
+            state.videoById.isLoading = true
+        },
+        SET_VIDEO_BY_ID_FULFILLED(state, payload) {
+            state.videoById.isLoading = false
+            state.videoById.data = payload.data
         }
     },
     actions: {
@@ -34,6 +45,15 @@ export default {
             } catch (error) {
                 contex.commit("SET_LIST_VIDEOS_REJECTED")
                 return error
+            }
+        },
+        async getVideoById(contex, payload) {
+            try {
+                contex.commit('SET_VIDEO_BY_ID_PENDING')
+                const response = await axios.get(`https://fazz-track-sample-api.vercel.app/video/${payload.id}`, { headers: { 'token': payload.token } })
+                contex.commit('SET_VIDEO_BY_ID_FULFILLED', response)
+            } catch (error) {
+                console.log(error);
             }
         },
         editVideo(contex, payload) {
