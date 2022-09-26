@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hamburger-line{
+    @apply my-1 block h-[2px] w-[20px] bg-[#2557a7];
+}
+
+.hamburger-active > span:nth-child(1){
+    @apply rotate-[40deg];
+}
+
+.hamburger-active > span:nth-child(2) {
+    @apply scale-0;
+}
+
+.hamburger-active > span:nth-child(3) {
+    @apply -rotate-[40deg];
+}
+
+.nav-active {
+    @apply right-0 translate-x-0;
+}
+
+.list-nav{
+    @apply lg:mr-12 flex p-4 lg:pl-0 font-sans w-full text-sm font-bold cursor-pointer text-slate-700;
+}
+
+.arrow-down{
+    @apply absolute right-5 lg:relative lg:ml-5 lg:-mt-[2px] lg:-right-1;
+}
+
+.list-nav-sub{
+    @apply relative block bg-slate-50 -left-1 font-sans text-sm font-bold lg:flex lg:absolute lg:top-20 lg:p-5 ;
+}
+
+.image-hero-0{
+    @apply relative h-[290px] w-auto mt-1 -right-44 md:-right-52 -z-10  lg:right-10;
+}
+.image-hero-1{
+    @apply relative -mt-1 h-[290px] w-auto lg:absolute md:-right-6 lg:right-[1rem] ;
+}
+.image-hero-2{
+    @apply relative -mt-2 h-[280px] w-auto right-44 md:right-40 lg:absolute lg:right-0;
+}
