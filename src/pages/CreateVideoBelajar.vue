@@ -2,6 +2,17 @@
     <Navbar />
         <main class="bg-slate-200 h-full p-5 lg:px-20 lg:py-10">
             <p class="text-center font-bold text-2xl">Add Video Belajar Online Fazztrack</p>
+                <!-- modal daisyUI start -->
+                <div class="modal" :class="isModal && 'modal-open'">
+                    <div class="modal-box">
+                        <h3 class="font-bold text-lg" :class="rating > 5 ? 'text-red-600' : 'text-green-600'">{{rating > 5 ? 'There an Error' : 'Successed'}}</h3>
+                        <p class="py-4">{{rating > 5 ? 'Rating Max 5' : 'Success Add Video'}}</p>
+                        <div class="modal-action">
+                        <label for="my-modal" class="btn" @click="btnCloseModal">close</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal daisyUi end -->
             <div class="flex flex-col">
                 <label class="pt-5">Title</label>
                 <TextArea class="px-3 py-1" @onsubmits="inputChange" name="title" />
@@ -40,7 +51,8 @@
             cover: '',
             rating: 0,
             level: '',
-            price: 0
+            price: 0,
+            isModal : false
         }
     },
     computed: {
@@ -74,12 +86,12 @@
             }
 
             if(this.rating > 5){
-                alert('error: rating max 5')
+                this.isModal = !this.isModal
             } else{
                 this.cratePosting(create)
                 .then((res) => {
-                    alert(res.data.message)
                     if(res){
+                        this.isModal = !this.isModal
                         setTimeout(()=> {
                             this.$router.replace('/modul-belajar')
                         }, 2000)
@@ -89,6 +101,9 @@
                 })
             }
         },
+        btnCloseModal(){
+            this.isModal = false
+        }
     },
     components: {
         Navbar,
