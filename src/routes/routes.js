@@ -4,6 +4,7 @@ import Register from '@/pages/Register.vue'
 import MiniBootcamp from '@/pages/MiniBootcamp.vue'
 import TentangFazztrack from '@/pages/TentangFazztrack.vue'
 import VideoBelajar from '@/pages/VideoBelajar.vue'
+import CreateVideoBelajar from '@/pages/CreateVideoBelajar.vue'
 import NotFound from '@/pages/NotFound.vue'
 
 const auth = (to, from, next) => {
@@ -58,6 +59,12 @@ export default [
         beforeEnter: auth,
         meta: {
             title: 'Modul Belajar Online Dari Fazztrack'
+        }
+    }, {
+        path: '/modul-belajar/create',
+        component: CreateVideoBelajar,
+        meta: {
+            title: 'Create New Video Belajar Online Fazztrack'
         }
     }, {
         path: '/:pathMatch(.*)*',
