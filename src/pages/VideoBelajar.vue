@@ -91,8 +91,8 @@
             </section>
         </main>
 
-        <main v-else-if="listVideos.isError">
-            <p>Error</p>
+        <main v-else-if="listVideos.isError" class="h-screen flex justify-center">
+            <p class="text-2xl font-bold">{{listVideos.errMsg}}</p>
         </main>
     <Footer />
 </template>
