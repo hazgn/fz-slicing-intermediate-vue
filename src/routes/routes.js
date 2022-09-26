@@ -5,6 +5,7 @@ import MiniBootcamp from '@/pages/MiniBootcamp.vue'
 import TentangFazztrack from '@/pages/TentangFazztrack.vue'
 import VideoBelajar from '@/pages/VideoBelajar.vue'
 import CreateVideoBelajar from '@/pages/CreateVideoBelajar.vue'
+import EditAndDeleteVideoBelajar from '@/pages/EditAndDeleteVideoBelajar.vue'
 import NotFound from '@/pages/NotFound.vue'
 
 const auth = (to, from, next) => {
@@ -52,6 +53,12 @@ export default [
         component: TentangFazztrack,
         meta: {
             title: 'Tentang Fazztrack'
+        }
+    }, {
+        path: '/modul-belajar/edit-or-delete/:id',
+        component: EditAndDeleteVideoBelajar,
+        meta: {
+            title: 'Edit And Delete Vide Belajar Fazztrack'
         }
     }, {
         path: '/modul-belajar',

@@ -38,6 +38,12 @@ export default {
         },
         postVideo(contex, payload) {
             return axios.post('https://fazz-track-sample-api.vercel.app/video', payload.body, { headers: { 'token': payload.token } })
+        },
+        editVideo(contex, payload) {
+            return axios.put(`https://fazz-track-sample-api.vercel.app/video/${payload.id}`, payload.body, { headers: { 'token': payload.token } })
+        },
+        deleteVideo(contex, payload) {
+            return axios.delete(`https://fazz-track-sample-api.vercel.app/video/${payload.id}`, { headers: { 'token': payload.token } })
         }
     },
     getters: {
