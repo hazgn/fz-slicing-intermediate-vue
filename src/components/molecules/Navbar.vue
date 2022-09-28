@@ -71,9 +71,12 @@
                             <p class="lg:w-32">Hire Our Graduates</p>
                         </li>
                         <li>
-                            <div class="flex flex-col mt-5 items-center lg:flex-row lg:mt-1 lg:relative lg:right-12 xl:right-auto lg:top-1">
+                            <div class="flex flex-col mt-5 items-center lg:flex-row lg:mt-1 lg:relative lg:right-12 xl:right-auto lg:top-1" v-if="!token">
                                 <Button label="Masuk" styles="w-[80%] bg-white border-[1px] hover:bg-slate-100 lg:mr-5" @onSubmit="onRegister" />
                                 <Button label="Daftar" styles="w-[80%] bg-[#2557a7] hover:bg-primary text-white mt-5 lg:mt-0" @onSubmit="onLogin" />
+                            </div>
+                            <div class="flex flex-col mt-5 items-center lg:flex-row lg:mt-1 lg:relative lg:right-12 xl:right-auto lg:top-1" v-else>
+                                <Button label="Logout" styles="w-[80%] bg-[#2557a7] hover:bg-primary text-white mt-5 lg:mt-0 lg:mr-5" @onSubmit="onLogout" />
                             </div>
                         </li>
                     </ul>
@@ -96,7 +99,8 @@
                 hamburgerToggler: false,
                 isClass:false,
                 isSupport:false,
-                isAbout:false
+                isAbout:false,
+                token : localStorage.getItem('token')
             }
         },
         methods : {
@@ -105,6 +109,10 @@
             },
             onLogin(){
                 this.$router.push('/register')
+            },
+            onLogout(){
+                localStorage.removeItem('token')
+                window.location.reload()
             }
         },
         components: {
