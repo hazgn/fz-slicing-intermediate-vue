@@ -1,5 +1,5 @@
 <template>
-        <input  class="border-2" :type="type" :name="name"  v-model="value" @keyup="submitInput">
+        <input  class="border-2" :content="content" :type="type" :name="name"  v-model="value" @keyup="submitInput">
 </template>
 
 
@@ -10,7 +10,7 @@ export default {
     name : 'TextArea',
     data(){
         return{
-            value: this.value
+            value: this.content
         }
     },
     methods : {
@@ -22,7 +22,7 @@ export default {
             this.$emit("onsubmits", data)
         }
     },
-    props : ["name", "type"]
+    props : ["name", "type", "content"]
 
 }
 

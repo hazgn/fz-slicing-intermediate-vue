@@ -57,7 +57,7 @@ export default {
                 contex.commit('SET_VIDEO_BY_ID_PENDING')
                 const response = await axios.get(`https://fazz-track-sample-api.vercel.app/video/${payload.id}`, { headers: { 'token': payload.token } })
                 contex.commit('SET_VIDEO_BY_ID_FULFILLED', response)
-                return response
+                // return response
             } catch (error) {
                 console.log(error);
             }
@@ -75,6 +75,9 @@ export default {
         },
         getVideoById(state) {
             return state.videoById
+        },
+        getVideoByIdData(state) {
+            return state.videoById.data
         }
     }
 }
